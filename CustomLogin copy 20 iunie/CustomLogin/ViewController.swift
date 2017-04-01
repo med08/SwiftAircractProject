@@ -12,7 +12,7 @@ import ParseUI
 
 class ViewController: UIViewController {
 
-   
+   //test commit
     @IBOutlet weak var signUpButton: UIButton!
     
     @IBOutlet weak var sometext: UITextView!
