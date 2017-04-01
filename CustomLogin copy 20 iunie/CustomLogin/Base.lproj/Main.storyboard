@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ird-Ed-M63">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add select Airplane View Controller-->
+        <scene sceneID="zOM-Tn-HJT">
+            <objects>
+                <viewController id="Ha2-9J-Bao" customClass="add_selectAirplaneViewController" customModule="CustomLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xSP-YP-rQy"/>
+                        <viewControllerLayoutGuide type="bottom" id="2DL-ag-QoO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ui9-hh-sfI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You don't have an airplane selected yet." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBM-Ik-iHM">
+                                <rect key="frame" x="8" y="114" width="303" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myf-n7-ddc">
+                                <rect key="frame" x="8" y="158" width="119" height="30"/>
+                                <state key="normal" title="Add new airplane"/>
+                                <connections>
+                                    <action selector="addAirplane:" destination="Ha2-9J-Bao" eventType="touchUpInside" id="rDw-fG-Hni"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="XlT-Dn-Pa7" kind="show" identifier="addNewPlane" id="gnS-61-Ajx"/>
+                        <segue destination="8q2-Fk-dV3" kind="show" identifier="mapView1" id="LQi-ex-z9Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8xr-Vc-rbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2476" y="436"/>
+        </scene>
+        <!--Change Airplane View Controller-->
+        <scene sceneID="eyL-FS-AZr">
+            <objects>
+                <viewController id="tHB-c3-HkP" customClass="ChangeAirplaneViewController" customModule="CustomLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bQv-bS-k58"/>
+                        <viewControllerLayoutGuide type="bottom" id="2k0-2R-j23"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cin-1l-Tba">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="2wP-ki-URv" kind="show" identifier="changeAirplaneToMainPage" id="XAF-VT-qaf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jZJ-fD-Sdn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443" y="332"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="NPk-1m-KTN">
+            <objects>
+                <viewController id="8q2-Fk-dV3" customClass="mapViewController" customModule="CustomLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6cG-QH-rp8"/>
+                        <viewControllerLayoutGuide type="bottom" id="W5L-aN-jYF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mgt-RC-oHl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCx-oL-FRK">
+                                <rect key="frame" x="0.0" y="494" width="600" height="31"/>
+                                <color key="backgroundColor" red="0.91061348781937013" green="0.91061348781937013" blue="0.91061348781937013" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not flying yet." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0S-JB-ffr">
+                                <rect key="frame" x="0.0" y="411" width="600" height="29"/>
+                                <color key="backgroundColor" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="YJ2-L2-gQt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CURRENT FLIGHT:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GsH-vX-ztB">
+                                <rect key="frame" x="0.0" y="363" width="600" height="48"/>
+                                <color key="backgroundColor" red="0.16078431372549021" green="0.50588235294117645" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ru8-5c-gbg">
+                                <rect key="frame" x="48" y="480" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In air time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evF-cc-KEQ">
+                                <rect key="frame" x="0.0" y="465" width="600" height="29"/>
+                                <color key="backgroundColor" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3n-9q-hW5">
+                                <rect key="frame" x="0.0" y="439" width="600" height="29"/>
+                                <color key="backgroundColor" red="0.91061348781937013" green="0.91061348781937013" blue="0.91061348781937013" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="oEm-iw-8wR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHw-8M-W1i">
+                                <rect key="frame" x="0.0" y="522" width="600" height="29"/>
+                                <color key="backgroundColor" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="ozX-pB-dLg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bVr-4P-c3s">
+                                <rect key="frame" x="0.0" y="-15" width="600" height="403"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PHw-8M-W1i" secondAttribute="trailing" id="3AJ-Mg-zY3"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="trailing" secondItem="k3n-9q-hW5" secondAttribute="trailing" id="ANn-E8-Nk6"/>
+                            <constraint firstItem="D0S-JB-ffr" firstAttribute="top" secondItem="GsH-vX-ztB" secondAttribute="bottom" id="GrC-PJ-yIR"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="trailing" secondItem="GsH-vX-ztB" secondAttribute="trailing" id="QWS-lK-ecu"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="trailing" secondItem="evF-cc-KEQ" secondAttribute="trailing" id="U8o-xO-ybU"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="trailing" secondItem="D0S-JB-ffr" secondAttribute="trailing" id="Wge-gv-96a"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="leading" secondItem="zCx-oL-FRK" secondAttribute="leading" id="XEG-SB-7pu"/>
+                            <constraint firstItem="zCx-oL-FRK" firstAttribute="top" secondItem="evF-cc-KEQ" secondAttribute="bottom" id="YAz-Kz-yNi"/>
+                            <constraint firstItem="W5L-aN-jYF" firstAttribute="top" secondItem="zCx-oL-FRK" secondAttribute="bottom" constant="26" id="YDP-Y2-MfZ"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="top" secondItem="evF-cc-KEQ" secondAttribute="bottom" constant="28" id="YPd-sh-nXg"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="bottom" secondItem="W5L-aN-jYF" secondAttribute="top" id="Ymf-AP-wYo"/>
+                            <constraint firstItem="bVr-4P-c3s" firstAttribute="trailing" secondItem="GsH-vX-ztB" secondAttribute="trailing" id="ZIl-7l-q85"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="trailing" secondItem="zCx-oL-FRK" secondAttribute="trailing" id="aiF-8s-3IH"/>
+                            <constraint firstItem="D0S-JB-ffr" firstAttribute="top" secondItem="bVr-4P-c3s" secondAttribute="bottom" constant="23" id="dac-MX-1DW"/>
+                            <constraint firstItem="k3n-9q-hW5" firstAttribute="top" secondItem="GsH-vX-ztB" secondAttribute="bottom" constant="28" id="hTG-Sa-JH8"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="leading" secondItem="k3n-9q-hW5" secondAttribute="leading" id="m4O-oA-x0p"/>
+                            <constraint firstItem="bVr-4P-c3s" firstAttribute="top" secondItem="Mgt-RC-oHl" secondAttribute="topMargin" constant="-15" id="mSn-Z8-4B9"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="leading" secondItem="D0S-JB-ffr" secondAttribute="leading" id="moV-gK-5Wu"/>
+                            <constraint firstItem="ru8-5c-gbg" firstAttribute="leading" secondItem="Mgt-RC-oHl" secondAttribute="leadingMargin" constant="28" id="n9Q-BT-JUx"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="leading" secondItem="Mgt-RC-oHl" secondAttribute="leading" id="nJK-7j-Gra"/>
+                            <constraint firstItem="zCx-oL-FRK" firstAttribute="top" secondItem="k3n-9q-hW5" secondAttribute="bottom" constant="26" id="rc6-vt-0el"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="leading" secondItem="evF-cc-KEQ" secondAttribute="leading" id="szf-p1-955"/>
+                            <constraint firstItem="evF-cc-KEQ" firstAttribute="top" secondItem="D0S-JB-ffr" secondAttribute="bottom" constant="25" id="tv6-Q6-758"/>
+                            <constraint firstItem="PHw-8M-W1i" firstAttribute="leading" secondItem="GsH-vX-ztB" secondAttribute="leading" id="uex-0p-Dxf"/>
+                            <constraint firstItem="bVr-4P-c3s" firstAttribute="leading" secondItem="GsH-vX-ztB" secondAttribute="leading" id="zoT-E7-nLq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="inAirTime" destination="evF-cc-KEQ" id="8rG-pA-x9v"/>
+                        <outlet property="mapView" destination="bVr-4P-c3s" id="5f0-jn-P0v"/>
+                        <outlet property="myAltitude" destination="zCx-oL-FRK" id="vra-R9-k5g"/>
+                        <outlet property="myLatitude" destination="D0S-JB-ffr" id="9Xd-gS-ikw"/>
+                        <outlet property="myLocationView" destination="PHw-8M-W1i" id="Sai-JM-cbc"/>
+                        <outlet property="myLongitude" destination="k3n-9q-hW5" id="ha4-pJ-gke"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FCL-50-Gqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1623" y="410"/>
+        </scene>
+        <!--Customlogin View Controller-->
+        <scene sceneID="Vts-ch-hbq">
+            <objects>
+                <viewController id="2wP-ki-URv" customClass="CustomloginViewController" customModule="CustomLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x2i-0S-M9B"/>
+                        <viewControllerLayoutGuide type="bottom" id="yhT-uk-VNz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nIf-LM-my1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poza1" translatesAutoresizingMaskIntoConstraints="NO" id="rBb-QN-07B">
+                                <rect key="frame" x="38" y="99" width="524" height="108"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83921568627450982" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="rBb-QN-07B" firstAttribute="centerX" secondItem="nIf-LM-my1" secondAttribute="centerX" id="9YT-Cx-5iH"/>
+                            <constraint firstItem="rBb-QN-07B" firstAttribute="leading" secondItem="nIf-LM-my1" secondAttribute="leadingMargin" constant="18" id="WHR-Cv-Iq8"/>
+                            <constraint firstItem="yhT-uk-VNz" firstAttribute="top" secondItem="rBb-QN-07B" secondAttribute="bottom" constant="344" id="cEJ-Ny-bV8"/>
+                            <constraint firstItem="rBb-QN-07B" firstAttribute="top" secondItem="x2i-0S-M9B" secondAttribute="bottom" constant="35" id="ob9-Qh-VQs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Pf3-CR-OTN"/>
+                    <connections>
+                        <segue destination="LRR-CP-BB5" kind="show" identifier="signup" id="Hqm-y6-8oO"/>
+                        <segue destination="8q2-Fk-dV3" kind="show" identifier="mapView" id="Ko2-AB-8xe"/>
+                        <segue destination="Ha2-9J-Bao" kind="show" identifier="chooseAirplane" id="mVB-Hj-RIK"/>
+                        <segue destination="tHB-c3-HkP" kind="show" identifier="changeAirplaneSegue" id="4je-ii-YLa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KWw-J3-r7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1134" y="1143"/>
+        </scene>
+        <!--Custom Sign Up View Controller-->
+        <scene sceneID="3XH-nU-csA">
+            <objects>
+                <viewController id="LRR-CP-BB5" customClass="CustomSignUpViewController" customModule="CustomLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EHh-6f-YLp"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qr9-EU-J26"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2td-Du-Pwi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WRS-Iq-dIn">
+                                <rect key="frame" x="20" y="101" width="188" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUm-iO-M4Q">
+                                <rect key="frame" x="20" y="219" width="188" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7K-wd-ljm">
+                                <rect key="frame" x="87" y="315" width="55" height="30"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signupAction:" destination="LRR-CP-BB5" eventType="touchUpInside" id="OEh-po-21u"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1gU-5c-PSc">
+                                <rect key="frame" x="20" y="159" width="188" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailField" destination="WRS-Iq-dIn" id="7ls-cq-aG2"/>
+                        <outlet property="passwordField" destination="hUm-iO-M4Q" id="J3P-eZ-3Xp"/>
+                        <outlet property="usernameField" destination="1gU-5c-PSc" id="EK2-0c-Z5H"/>
+                        <segue destination="2wP-ki-URv" kind="show" identifier="signuptologin" id="teI-rT-N2S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ywJ-bg-tCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1872" y="1125"/>
+        </scene>
+        <!--Flight-->
+        <scene sceneID="kUX-bz-6Wl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xb7-Pr-47Q" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Flight" image="prop_plane-25" id="9bN-He-vUO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hGk-gh-QAa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2wP-ki-URv" kind="relationship" relationship="rootViewController" id="mNW-Ze-VRa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="60R-Tf-m5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="470" y="1155"/>
+        </scene>
+        <!--Display Flights View Controller-->
+        <scene sceneID="dgM-LD-T56">
+            <objects>
+                <viewController id="5zC-PG-d1J" customClass="displayFlightsViewController" customModule="CustomLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P1B-oj-aEc"/>
+                        <viewControllerLayoutGuide type="bottom" id="u0F-Us-sr0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZdM-zL-rsd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.87002840909090906" green="0.87002840909090906" blue="0.87002840909090906" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fhZ-uR-MBP"/>
+                    <connections>
+                        <segue destination="LwB-IS-tU7" kind="show" identifier="allFlights" id="879-Ye-LyP"/>
+                        <segue destination="LwB-IS-tU7" kind="show" identifier="customFlights" id="ppO-pT-r1G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SjO-BS-a0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1742" y="1845"/>
+        </scene>
+        <!--All Flights View Controller-->
+        <scene sceneID="i9b-f6-vw8">
+            <objects>
+                <viewController id="LwB-IS-tU7" customClass="allFlightsViewController" customModule="CustomLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GUu-Yq-9cV"/>
+                        <viewControllerLayoutGuide type="bottom" id="yys-ZU-oRS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pMv-ch-ABr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="QVf-8T-uxO" kind="show" identifier="flightDetails" id="eW3-6p-n8L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="meh-0S-biz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2397" y="1845"/>
+        </scene>
+        <!--Flight Details View Controller-->
+        <scene sceneID="Ygo-Fc-1zU">
+            <objects>
+                <viewController id="QVf-8T-uxO" customClass="flightDetailsViewController" customModule="CustomLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9v2-fL-hBI"/>
+                        <viewControllerLayoutGuide type="bottom" id="nX3-Be-0B2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6ja-U0-dep">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1qb-3Q-U8J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3032" y="1847"/>
+        </scene>
+        <!--User Details View Controller-->
+        <scene sceneID="XPM-bS-3Za">
+            <objects>
+                <viewController storyboardIdentifier="view" id="I1I-z9-bDM" customClass="UserDetailsViewController" customModule="CustomLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hv1-tK-MPy"/>
+                        <viewControllerLayoutGuide type="bottom" id="r6w-Uo-Mbt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pvc-Bq-790">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.83921568627450982" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="g82-X8-lHR"/>
+                    <connections>
+                        <segue destination="XlT-Dn-Pa7" kind="show" identifier="addAirplane" id="KmA-XI-u1R"/>
+                        <segue destination="8NA-8O-va0" kind="show" identifier="addlicence" id="cqc-Ly-9aq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ovu-hw-5Tk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1758" y="2624"/>
+        </scene>
+        <!--Add Licence View Controller-->
+        <scene sceneID="oq4-0F-Haj">
+            <objects>
+                <viewController id="8NA-8O-va0" customClass="AddLicenceViewController" customModule="CustomLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eRF-4S-WKa"/>
+                        <viewControllerLayoutGuide type="bottom" id="dhi-fY-xAG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LEM-oR-OJv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Date obtained:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5qO-el-3wZ">
+                                <rect key="frame" x="25" y="242" width="166" height="31"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Licence Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WLO-Mu-mr0">
+                                <rect key="frame" x="25" y="197" width="166" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Jx-qd-cZQ">
+                                <rect key="frame" x="25" y="275" width="166" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VyH-op-bk8">
+                                <rect key="frame" x="25" y="369" width="166" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Sd-3Z-9kh">
+                                <rect key="frame" x="58" y="429" width="80" height="30"/>
+                                <state key="normal" title="Add licence"/>
+                                <connections>
+                                    <action selector="addLicenceToDatabase:" destination="8NA-8O-va0" eventType="touchUpInside" id="dPF-6l-OE9"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Licence Type:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nPg-8f-R6s">
+                                <rect key="frame" x="25" y="162" width="179" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Expiration date:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8uQ-Su-46I">
+                                <rect key="frame" x="25" y="337" width="166" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateObtainedField" destination="2Jx-qd-cZQ" id="uB8-9h-rci"/>
+                        <outlet property="expirationDateField" destination="VyH-op-bk8" id="n8r-dZ-smw"/>
+                        <outlet property="licenceTypeField" destination="WLO-Mu-mr0" id="eWP-hM-5nQ"/>
+                        <segue destination="I1I-z9-bDM" kind="show" identifier="addLicenceToMainPage" id="gd9-TV-0mP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RKL-Zl-3zK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768" y="3574"/>
+        </scene>
+        <!--Add Airplane View Controller-->
+        <scene sceneID="NLW-Im-pTJ">
+            <objects>
+                <viewController id="XlT-Dn-Pa7" customClass="AddAirplaneViewController" customModule="CustomLogin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Ia-J0-f9b"/>
+                        <viewControllerLayoutGuide type="bottom" id="y8l-2h-Ggf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lOt-mS-EUs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type of aircraft" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U4H-J2-2Cw">
+                                <rect key="frame" x="13" y="124" width="182" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Aircraft Registration" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="di7-Vh-Pwp">
+                                <rect key="frame" x="13" y="193" width="182" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stall speed, full flaps" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qx4-Ub-ulu">
+                                <rect key="frame" x="13" y="257" width="182" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Aircraft flight hours" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5pP-dt-IBs">
+                                <rect key="frame" x="13" y="330" width="182" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last inspection" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E3D-Cx-Sew">
+                                <rect key="frame" x="13" y="394" width="182" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Last inspection:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rSf-yL-Xjh">
+                                <rect key="frame" x="13" y="361" width="193" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Aircraft flight hours:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i0q-bh-8os">
+                                <rect key="frame" x="13" y="295" width="193" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Stall speed, full flaps:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xfv-jS-0m7">
+                                <rect key="frame" x="13" y="223" width="193" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Aircraft registration:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LdH-as-uiE">
+                                <rect key="frame" x="13" y="157" width="193" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bhw-CN-gNs">
+                                <rect key="frame" x="13" y="452" width="182" height="90"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XlT-Dn-Pa7" id="6wK-TX-CfO"/>
+                                </connections>
+                            </pickerView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Inspection intervals:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lw1-BD-7tv">
+                                <rect key="frame" x="13" y="425" width="193" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Type of aircraft:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zUw-ys-DAm">
+                                <rect key="frame" x="13" y="90" width="193" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meQ-IK-5bP">
+                                <rect key="frame" x="89" y="550" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addAircraft:" destination="XlT-Dn-Pa7" eventType="touchUpInside" id="TFD-X4-IaG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="hoursField" destination="5pP-dt-IBs" id="WGO-wO-Aaf"/>
+                        <outlet property="inspectionField" destination="E3D-Cx-Sew" id="kWH-Oa-Ghy"/>
+                        <outlet property="pickerView" destination="bhw-CN-gNs" id="Ggg-Xp-oWl"/>
+                        <outlet property="registrationField" destination="di7-Vh-Pwp" id="VW9-xY-VIC"/>
+                        <outlet property="speedField" destination="qx4-Ub-ulu" id="0B9-19-NPY"/>
+                        <outlet property="typeField" destination="U4H-J2-2Cw" id="rn4-aB-qHS"/>
+                        <segue destination="I1I-z9-bDM" kind="show" identifier="addAirplaneToMainPage" id="kLp-pX-BRd"/>
+                        <segue destination="Ha2-9J-Bao" kind="show" identifier="addToAddSelect" id="77D-UH-BAn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WRP-DY-wgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2554" y="2618"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="tT6-0E-waR">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ird-Ed-M63" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="BfX-Zc-1Ld">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Xb7-Pr-47Q" kind="relationship" relationship="viewControllers" id="dvz-Of-ITj"/>
+                        <segue destination="4v6-mV-zNx" kind="relationship" relationship="viewControllers" id="IgB-Lr-lAf"/>
+                        <segue destination="I0J-1u-fOh" kind="relationship" relationship="viewControllers" id="uSp-89-KQ2"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cOC-6K-Mdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="134" y="1845"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="nP6-Gh-2KY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I0J-1u-fOh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="user-25" id="SXz-BG-aQH"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AGO-B8-YCb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="I1I-z9-bDM" kind="relationship" relationship="rootViewController" id="Pta-K2-vxC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Noi-DV-Dqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="882" y="2624"/>
+        </scene>
+        <!--Logbook-->
+        <scene sceneID="pLD-yy-Qkj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4v6-mV-zNx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Logbook" image="search_property-25" id="hA5-73-L8s"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uy0-vw-TiL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5zC-PG-d1J" kind="relationship" relationship="rootViewController" id="vyU-og-9nj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nc7-4X-WTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="930" y="1845"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="poza1" width="425" height="170"/>
+        <image name="prop_plane-25" width="25" height="25"/>
+        <image name="search_property-25" width="25" height="25"/>
+        <image name="user-25" width="25" height="25"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Pta-K2-vxC"/>
+        <segue reference="mNW-Ze-VRa"/>
+        <segue reference="mVB-Hj-RIK"/>
+        <segue reference="Ko2-AB-8xe"/>
+        <segue reference="ppO-pT-r1G"/>
+        <segue reference="KmA-XI-u1R"/>
+    </inferredMetricsTieBreakers>
+</document>

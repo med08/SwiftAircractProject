@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="SELFBOOK" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tAV-me-phq">
+                                <rect key="frame" x="170" y="150" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="iaN-KP-k4M"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="0.43159155996459075" blue="0.41782827335836459" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="initialphoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jhV-VT-y1y">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jhV-VT-y1y" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="Mbh-fr-tba"/>
+                            <constraint firstAttribute="trailing" secondItem="jhV-VT-y1y" secondAttribute="trailing" id="OMW-f2-Wzf"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="tAV-me-phq" secondAttribute="bottom" constant="322" id="Uwx-Tq-NTY"/>
+                            <constraint firstItem="tAV-me-phq" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="170" id="VtW-jU-Ybe"/>
+                            <constraint firstItem="jhV-VT-y1y" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ZOF-GM-MCe"/>
+                            <constraint firstItem="tAV-me-phq" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="130" id="as9-yy-1Ah"/>
+                            <constraint firstItem="jhV-VT-y1y" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="dJf-mw-kil"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="355"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="initialphoto.jpg" width="640" height="1136"/>
+    </resources>
+</document>
