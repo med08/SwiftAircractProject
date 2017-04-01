@@ -11,9 +11,9 @@ import Parse
 
 class displayFlightsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    let dayField = UITextField(frame: CGRectMake(0, 260, 300, 40))
-    let monthField = UITextField(frame: CGRectMake(0, 300, 300, 40))
-    let yearField = UITextField(frame: CGRectMake(0, 350, 300, 40))
+    let dayField = UITextField(frame: CGRect(x: 0, y: 260, width: 300, height: 40))
+    let monthField = UITextField(frame: CGRect(x: 0, y: 300, width: 300, height: 40))
+    let yearField = UITextField(frame: CGRect(x: 0, y: 350, width: 300, height: 40))
     let airplaneField = UITextField()
 
     let dayPickOption = ["Any day","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
@@ -31,11 +31,11 @@ class displayFlightsViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         airplanePickOption.append("Any airplane")
         
-        let currentUser = PFUser.currentUser()
+        let currentUser = PFUser.current()
         let query = PFQuery(className: "Flight")
         
         query.whereKey("user", equalTo: currentUser!)
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -54,9 +54,9 @@ class displayFlightsViewController: UIViewController, UIPickerViewDelegate, UIPi
         label.bounds = CGRect(x: 0, y: 0, width: view.bounds.width - 30, height: 80)
         label.center = CGPoint(x: view.bounds.width / 2, y: 100)
         label.backgroundColor = UIColor(patternImage: UIImage(named: "Icon-Spotlight-40")!)
-        label.font = UIFont.systemFontOfSize(20)
-        label.textColor = UIColor.whiteColor()
-        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = UIColor.white
+        label.textAlignment = NSTextAlignment.center
         label.text = "Display flights for:"
         self.view.addSubview(label)
 
@@ -64,31 +64,31 @@ class displayFlightsViewController: UIViewController, UIPickerViewDelegate, UIPi
         dayField.bounds = CGRect(x: 0, y: 0, width: view.bounds.width-50, height: 40)
         dayField.center = CGPoint(x: view.bounds.width / 2, y: 200)
         dayField.placeholder = "Day"
-        dayField.font = UIFont.systemFontOfSize(15)
-        dayField.borderStyle = UITextBorderStyle.RoundedRect
+        dayField.font = UIFont.systemFont(ofSize: 15)
+        dayField.borderStyle = UITextBorderStyle.roundedRect
         self.view.addSubview(dayField)
         
         
         monthField.bounds = CGRect(x: 0, y: 0, width: view.bounds.width-50, height: 40)
         monthField.center = CGPoint(x: view.bounds.width / 2, y: 250)
         monthField.placeholder = "Month"
-        monthField.font = UIFont.systemFontOfSize(15)
-        monthField.borderStyle = UITextBorderStyle.RoundedRect
+        monthField.font = UIFont.systemFont(ofSize: 15)
+        monthField.borderStyle = UITextBorderStyle.roundedRect
         self.view.addSubview(monthField)
         
         
         yearField.bounds = CGRect(x: 0, y: 0, width: view.bounds.width-50, height: 40)
         yearField.center = CGPoint(x: view.bounds.width / 2, y: 300)
         yearField.placeholder = "Year"
-        yearField.font = UIFont.systemFontOfSize(15)
-        yearField.borderStyle = UITextBorderStyle.RoundedRect
+        yearField.font = UIFont.systemFont(ofSize: 15)
+        yearField.borderStyle = UITextBorderStyle.roundedRect
         self.view.addSubview(yearField)
         
         airplaneField.bounds = CGRect(x: 0, y: 0, width: view.bounds.width-50, height: 40)
         airplaneField.center = CGPoint(x: view.bounds.width / 2, y: 350)
         airplaneField.placeholder = "Airplane"
-        airplaneField.font = UIFont.systemFontOfSize(15)
-        airplaneField.borderStyle = UITextBorderStyle.RoundedRect
+        airplaneField.font = UIFont.systemFont(ofSize: 15)
+        airplaneField.borderStyle = UITextBorderStyle.roundedRect
         self.view.addSubview(airplaneField)
         
         let dayPickerView = UIPickerView()
@@ -112,30 +112,30 @@ class displayFlightsViewController: UIViewController, UIPickerViewDelegate, UIPi
         yearPickerView.tag = 2
         airplanePickerView.tag = 3
 
-        let button1   = UIButton(type: UIButtonType.System) as UIButton
+        let button1   = UIButton(type: UIButtonType.system) as UIButton
         button1.bounds = CGRect(x: 0, y: 0, width: view.bounds.width - 30, height: 80)
         button1.center = CGPoint(x: view.bounds.width / 2, y: self.view.frame.size.height - 180)
         
-        button1.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), forState: UIControlState.Normal)
-        button1.titleLabel?.font = UIFont.systemFontOfSize(20)
-        button1.setTitleColor(UIColor.whiteColor(), forState:  UIControlState.Normal)
+        button1.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), for: UIControlState())
+        button1.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button1.setTitleColor(UIColor.white, for:  UIControlState())
         
         
-        button1.setTitle("Custom search", forState: UIControlState.Normal)
-        button1.addTarget(self, action: #selector(displayFlightsViewController.button1Action(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        button1.setTitle("Custom search", for: UIControlState())
+        button1.addTarget(self, action: #selector(displayFlightsViewController.button1Action(_:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(button1)
         
         
-         let button   = UIButton(type: UIButtonType.System) as UIButton
+         let button   = UIButton(type: UIButtonType.system) as UIButton
          button.bounds = CGRect(x: 0, y: 0, width: view.bounds.width - 30, height: 80)
          button.center = CGPoint(x: view.bounds.width / 2, y: self.view.frame.size.height - 90)
-         button.setTitle("Show all flights", forState: UIControlState.Normal)
+         button.setTitle("Show all flights", for: UIControlState())
          
-         button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), forState: UIControlState.Normal)
-         button.titleLabel?.font = UIFont.systemFontOfSize(20)
-         button.setTitleColor(UIColor.whiteColor(), forState:  UIControlState.Normal)
+         button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), for: UIControlState())
+         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+         button.setTitleColor(UIColor.white, for:  UIControlState())
          
-         button.addTarget(self, action: #selector(displayFlightsViewController.buttonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+         button.addTarget(self, action: #selector(displayFlightsViewController.buttonAction(_:)), for: UIControlEvents.touchUpInside)
          self.view.addSubview(button)
         
         
@@ -148,13 +148,13 @@ class displayFlightsViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
 
     
-    func buttonAction(sender:UIButton!)
+    func buttonAction(_ sender:UIButton!)
     {
-        self.performSegueWithIdentifier("allFlights", sender: self)
+        self.performSegue(withIdentifier: "allFlights", sender: self)
 
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         searchParameters[0] = self.dayField.text!
         //searchParameters[1] = self.monthField.text!
         searchParameters[2] = self.yearField.text!
@@ -187,54 +187,54 @@ class displayFlightsViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         
         if (segue.identifier == "customFlights") {
-            let svc = segue.destinationViewController as! allFlightsViewController;
+            let svc = segue.destination as! allFlightsViewController;
             svc.custom = 1
             svc.searchParameters = searchParameters
         }
     }
     
-    func button1Action(sender:UIButton!)
+    func button1Action(_ sender:UIButton!)
     {
         if self.dayField.text! == ""{
             let alertController = UIAlertController(title: "Error", message:
-                "You didn't select a day", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+                "You didn't select a day", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
             
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
         else if self.monthField.text! == ""{
             let alertController = UIAlertController(title: "Error", message:
-                "You didn't select a month", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+                "You didn't select a month", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
             
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
         else if self.yearField.text! == ""{
             let alertController = UIAlertController(title: "Error", message:
-                "You didn't select a year", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+                "You didn't select a year", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
             
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
         else if self.airplaneField.text! == ""{
             let alertController = UIAlertController(title: "Error", message:
-                "You didn't select an airplane", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+                "You didn't select an airplane", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
             
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
         else{
-            self.performSegueWithIdentifier("customFlights", sender: self)
+            self.performSegue(withIdentifier: "customFlights", sender: self)
         }
         
     }
     
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
 
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 0{
             return dayPickOption.count
         }
@@ -250,7 +250,7 @@ class displayFlightsViewController: UIViewController, UIPickerViewDelegate, UIPi
         return 1
     }
 
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 0{
             return dayPickOption[row]
         }
@@ -266,7 +266,7 @@ class displayFlightsViewController: UIViewController, UIPickerViewDelegate, UIPi
         return ""
     }
 
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 0{
             dayField.text = dayPickOption[row]
         }
@@ -283,7 +283,7 @@ class displayFlightsViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 }

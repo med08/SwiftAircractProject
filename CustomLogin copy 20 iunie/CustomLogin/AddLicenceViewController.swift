@@ -41,7 +41,7 @@ class AddLicenceViewController: UIViewController,UITextFieldDelegate {
     }
     */
 
-    @IBAction func addLicenceToDatabase(sender: UIButton) {
+    @IBAction func addLicenceToDatabase(_ sender: UIButton) {
         let licenceType = self.licenceTypeField.text
         let dateObtained = self.dateObtainedField.text
         let expirationDate = self.expirationDateField.text
@@ -50,12 +50,12 @@ class AddLicenceViewController: UIViewController,UITextFieldDelegate {
         licence["Type"] = licenceType
         licence["Date_obtained"] = dateObtained
         licence["Expiration_date"] = expirationDate
-        licence["User"] = PFUser.currentUser()
-        licence.saveInBackgroundWithBlock { (success, error) -> Void in
+        licence["User"] = PFUser.current()
+        licence.saveInBackground { (success, error) -> Void in
             if success {
                 let alert = UIAlertView(title: "Success", message: "\(licenceType!) licence successfully added.", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
-                self.performSegueWithIdentifier("addLicenceToMainPage", sender: self)
+                self.performSegue(withIdentifier: "addLicenceToMainPage", sender: self)
             }
             else{
                 let alert = UIAlertView(title: "Invalid", message: "\(licenceType!) licence could not be added.", delegate: self, cancelButtonTitle: "OK")
@@ -65,39 +65,39 @@ class AddLicenceViewController: UIViewController,UITextFieldDelegate {
         
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     let datePicker = UIDatePicker()
     let datePicker2 = UIDatePicker()
     //create datepicker, textfield(is the 'lastInspection' field)
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        datePicker.datePickerMode = UIDatePickerMode.Date
+        datePicker.datePickerMode = UIDatePickerMode.date
         dateObtainedField.inputView = datePicker
-        datePicker.addTarget(self, action: "datePickerChanged:", forControlEvents: .ValueChanged)
+        datePicker.addTarget(self, action: #selector(AddLicenceViewController.datePickerChanged(_:)), for: .valueChanged)
 
-        datePicker2.datePickerMode = UIDatePickerMode.Date
+        datePicker2.datePickerMode = UIDatePickerMode.date
         expirationDateField.inputView = datePicker2
-        datePicker2.addTarget(self, action: "datePickerChanged:", forControlEvents: .ValueChanged)
+        datePicker2.addTarget(self, action: #selector(AddLicenceViewController.datePickerChanged(_:)), for: .valueChanged)
 
         
     }
     
-    func datePickerChanged(sender: UIDatePicker) {
+    func datePickerChanged(_ sender: UIDatePicker) {
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy"
         if sender == datePicker{
-            dateObtainedField.text = formatter.stringFromDate(sender.date)
+            dateObtainedField.text = formatter.string(from: sender.date)
         }
         if sender == datePicker2{
-            expirationDateField.text = formatter.stringFromDate(sender.date)
+            expirationDateField.text = formatter.string(from: sender.date)
         }
 
     }

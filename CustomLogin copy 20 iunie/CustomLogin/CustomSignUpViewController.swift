@@ -16,7 +16,7 @@ class CustomSignUpViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
 
     @IBOutlet weak var passwordField: UITextField!
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0,150,150)) as UIActivityIndicatorView
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 150,height: 150)) as UIActivityIndicatorView
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,24 +27,24 @@ class CustomSignUpViewController: UIViewController {
         
         self.activityIndicator.hidesWhenStopped = true
         
-        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         
         view.addSubview(self.activityIndicator)
-        print("User before \(PFUser.currentUser())")
-         self.navigationController?.navigationBarHidden = false
+        print("User before \(PFUser.current())")
+         self.navigationController?.isNavigationBarHidden = false
         
         
         usernameField.bounds = CGRect(x: 0, y: 0, width: view.bounds.width-50, height: 40)
         usernameField.center = CGPoint(x: view.bounds.width / 2, y: self.view.frame.size.height - 280)
         usernameField.placeholder = "Username"
-        usernameField.font = UIFont.systemFontOfSize(15)
-        usernameField.borderStyle = UITextBorderStyle.RoundedRect
-        usernameField.autocorrectionType = UITextAutocorrectionType.No
-        usernameField.keyboardType = UIKeyboardType.Default
-        usernameField.returnKeyType = UIReturnKeyType.Done
-        usernameField.clearButtonMode = UITextFieldViewMode.WhileEditing;
-        usernameField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
-        usernameField.delegate = self
+        usernameField.font = UIFont.systemFont(ofSize: 15)
+        usernameField.borderStyle = UITextBorderStyle.roundedRect
+        usernameField.autocorrectionType = UITextAutocorrectionType.no
+        usernameField.keyboardType = UIKeyboardType.default
+        usernameField.returnKeyType = UIReturnKeyType.done
+        usernameField.clearButtonMode = UITextFieldViewMode.whileEditing;
+        usernameField.contentVerticalAlignment = UIControlContentVerticalAlignment.center
+        //usernameField.delegate = self
         self.view.addSubview(usernameField)
         
     }
@@ -68,7 +68,7 @@ class CustomSignUpViewController: UIViewController {
 
     //Actions
     
-    @IBAction func signupAction(sender: AnyObject) {
+    @IBAction func signupAction(_ sender: AnyObject) {
         
         let username = self.usernameField.text
         let password = self.passwordField.text
@@ -82,7 +82,7 @@ class CustomSignUpViewController: UIViewController {
         }
         else
             if (email!.utf16.count < 8){
-                var alert = UIAlertView(title: "Invalid", message: "Please enter a valid email", delegate: self, cancelButtonTitle: "OK")
+                let alert = UIAlertView(title: "Invalid", message: "Please enter a valid email", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
             }
             else{
@@ -92,20 +92,20 @@ class CustomSignUpViewController: UIViewController {
                 newUser.username = username
                 newUser.password = password
                 newUser.email = email
-                print("User 13: \(PFUser.currentUser())")
+                print("User 13: \(PFUser.current())")
 
-                newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
+                newUser.signUpInBackground(block: { (succeed, error) -> Void in
                     self.activityIndicator.stopAnimating()
                     
                     if((error) != nil){
-                        var alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
+                        let alert = UIAlertView(title: "Error", message: "\(error)", delegate: self, cancelButtonTitle: "OK")
                         alert.show()
                         
                     }
                     else {
                         PFUser.logOut() //nu stiu de ce ramane logat
-                        self.performSegueWithIdentifier("signuptologin", sender: self)
-                        var alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
+                        self.performSegue(withIdentifier: "signuptologin", sender: self)
+                        let alert = UIAlertView(title: "Success", message: "Signed Up", delegate: self, cancelButtonTitle: "OK")
                         alert.show()
                         
                     }

@@ -45,7 +45,7 @@ class AddAirplaneViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
 
   
-    @IBAction func addAircraft(sender: AnyObject) {
+    @IBAction func addAircraft(_ sender: AnyObject) {
     
         
         let registration = self.registrationField.text
@@ -61,19 +61,19 @@ class AddAirplaneViewController: UIViewController, UIPickerViewDelegate, UIPicke
         plane["FlightHours"] = hours
         plane["LastInspection"] = inspection
         plane["InspInterval"] = Values[answer]
-        plane["User"] = PFUser.currentUser()
+        plane["User"] = PFUser.current()
         plane["CurrentAirplane"] = 1
         
         beforeAdd(sender)
-        plane.saveInBackgroundWithBlock { (success, error) -> Void in
+        plane.saveInBackground { (success, error) -> Void in
             if success {
                 let alert = UIAlertView(title: "Success", message: "\(type!) successfully added.", delegate: self, cancelButtonTitle: "OK")
                 alert.show()
                 if self.fromUserDetails == 1{
-                    self.performSegueWithIdentifier("addAirplaneToMainPage", sender: self)
+                    self.performSegue(withIdentifier: "addAirplaneToMainPage", sender: self)
                 }
                 else{
-                    self.performSegueWithIdentifier("addToAddSelect", sender: self)
+                    self.performSegue(withIdentifier: "addToAddSelect", sender: self)
                 }
             }
             else{
@@ -83,15 +83,15 @@ class AddAirplaneViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     
-    func beforeAdd(sender: AnyObject){
+    func beforeAdd(_ sender: AnyObject){
         
         let query = PFQuery(className: "Aircrafts")
-        let currentUser = PFUser.currentUser()
+        let currentUser = PFUser.current()
         query.whereKey("User", equalTo: currentUser!)
         //query.whereKey("Type", equalTo: "CPL") imi intoarce doar anumite linii
         //query.selectKeys("Type") doar coloana asta
         //query.orderByAscending("Type")
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -105,44 +105,44 @@ class AddAirplaneViewController: UIViewController, UIPickerViewDelegate, UIPicke
 
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return Values[row]
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Values.count
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int{
         return 1
     }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         answer = row
     }
     
     //create datepicker, textfield(is the 'lastInspection' field)
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         let datePicker = UIDatePicker()
-        datePicker.datePickerMode = UIDatePickerMode.Date
+        datePicker.datePickerMode = UIDatePickerMode.date
         textField.inputView = datePicker
-        datePicker.addTarget(self, action: #selector(AddAirplaneViewController.datePickerChanged(_:)), forControlEvents: .ValueChanged)
+        datePicker.addTarget(self, action: #selector(AddAirplaneViewController.datePickerChanged(_:)), for: .valueChanged)
     }
     
-    func datePickerChanged(sender: UIDatePicker) {
+    func datePickerChanged(_ sender: UIDatePicker) {
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy"
-        inspectionField.text = formatter.stringFromDate(sender.date)
+        inspectionField.text = formatter.string(from: sender.date)
     }
     
     //Inspection text field(begin editing)
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true 
     }
     
     //Close keybord when when touch the screen
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     

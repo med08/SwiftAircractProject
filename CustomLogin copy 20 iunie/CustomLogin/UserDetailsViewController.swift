@@ -22,49 +22,49 @@ class UserDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         
-        let addAirplaneButton   = UIButton(type: UIButtonType.System) as UIButton
+        let addAirplaneButton   = UIButton(type: UIButtonType.system) as UIButton
         addAirplaneButton.bounds = CGRect(x: 0, y: 0, width: view.bounds.width - 30, height: 80)
         addAirplaneButton.center = CGPoint(x: view.bounds.width / 2, y: 120)
-        addAirplaneButton.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), forState: UIControlState.Normal)
-        addAirplaneButton.titleLabel?.font = UIFont.systemFontOfSize(20)
-        addAirplaneButton.setTitleColor(UIColor.whiteColor(), forState:  UIControlState.Normal)
-        addAirplaneButton.setTitle("Add Aircraft", forState: UIControlState.Normal)
-        addAirplaneButton.addTarget(self, action: #selector(UserDetailsViewController.addToDatabase(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        addAirplaneButton.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), for: UIControlState())
+        addAirplaneButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        addAirplaneButton.setTitleColor(UIColor.white, for:  UIControlState())
+        addAirplaneButton.setTitle("Add Aircraft", for: UIControlState())
+        addAirplaneButton.addTarget(self, action: #selector(UserDetailsViewController.addToDatabase(_:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview( addAirplaneButton)
 
-        let addLicence  = UIButton(type: UIButtonType.System) as UIButton
+        let addLicence  = UIButton(type: UIButtonType.system) as UIButton
         addLicence.bounds = CGRect(x: 0, y: 0, width: view.bounds.width - 30, height: 80)
         addLicence.center = CGPoint(x: view.bounds.width / 2, y: 210)
-        addLicence.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), forState: UIControlState.Normal)
-        addLicence.titleLabel?.font = UIFont.systemFontOfSize(20)
-        addLicence.setTitleColor(UIColor.whiteColor(), forState:  UIControlState.Normal)
-        addLicence.setTitle("Add Licence", forState: UIControlState.Normal)
-        addLicence.addTarget(self, action: #selector(UserDetailsViewController.addLicencetoDatabase(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        addLicence.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), for: UIControlState())
+        addLicence.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        addLicence.setTitleColor(UIColor.white, for:  UIControlState())
+        addLicence.setTitle("Add Licence", for: UIControlState())
+        addLicence.addTarget(self, action: #selector(UserDetailsViewController.addLicencetoDatabase(_:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(addLicence)
         
         self.navigationItem.title = "PROFILE"
         
-        self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.isHidden = false
         
         addAirplaneButton.tag = 12
  
         
-        tableView1.frame         =   CGRectMake(15, 265, view.bounds.width - 30, 500);
+        tableView1.frame         =   CGRect(x: 15, y: 265, width: view.bounds.width - 30, height: 500);
         tableView1.delegate      =   self
         tableView1.dataSource    =   self
         
-        tableView1.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView1.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         
         //Retrive all the data from the class
         
         var query = PFQuery(className: "Licence")
-        let currentUser = PFUser.currentUser()
+        let currentUser = PFUser.current()
         query.whereKey("User", equalTo: currentUser!)
         //query.whereKey("Type", equalTo: "CPL") imi intoarce doar anumite linii
         //query.selectKeys("Type") doar coloana asta
         //query.orderByAscending("Type")
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -86,7 +86,7 @@ class UserDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         //query.whereKey("Type", equalTo: "CPL") imi intoarce doar anumite linii
         //query.selectKeys("Type") doar coloana asta
         //query.orderByAscending("Type")
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -103,15 +103,15 @@ class UserDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         var query = PFQuery(className: "Licence")
-        let currentUser = PFUser.currentUser()
+        let currentUser = PFUser.current()
         query.whereKey("User", equalTo: currentUser!)
         //query.whereKey("Type", equalTo: "CPL") imi intoarce doar anumite linii
         //query.selectKeys("Type") doar coloana asta
         //query.orderByAscending("Type")
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -133,7 +133,7 @@ class UserDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         //query.whereKey("Type", equalTo: "CPL") imi intoarce doar anumite linii
         //query.selectKeys("Type") doar coloana asta
         //query.orderByAscending("Type")
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -169,26 +169,26 @@ class UserDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     */
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "addAirplane") {
-            let svc = segue.destinationViewController as! AddAirplaneViewController;
+            let svc = segue.destination as! AddAirplaneViewController;
             svc.fromUserDetails = 1
             
         }
     }
     
-    @IBAction func addToDatabase(sender: AnyObject) {
-        self.performSegueWithIdentifier("addAirplane", sender: sender)
+    @IBAction func addToDatabase(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "addAirplane", sender: sender)
     }
     
     
-    @IBAction func addLicencetoDatabase(sender: UIButton) {
-        self.performSegueWithIdentifier("addlicence", sender: self)
+    @IBAction func addLicencetoDatabase(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "addlicence", sender: self)
     }
     
 
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 { //prima sectiune
                         if self.retobj.count == 0{
                 return 1
@@ -210,41 +210,41 @@ class UserDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
   
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-         let cell:UITableViewCell = tableView1.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         let cell:UITableViewCell = tableView1.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         if indexPath.section == 0{  //daca sunt in prima sectiune imi ia din prima lists
             if self.retobj.count == 0{
                 cell.textLabel?.text = "You don't have any licence added yet."
-                cell.backgroundColor = hexStringToUIColor("#D7D7D7")
+                //cell.backgroundColor = hexStringToUIColor("#D7D7D7")
                 
             }
             else{
                 let va = self.retobj[indexPath.row]["Type"] as! String
                 cell.textLabel?.text = va
-                cell.backgroundColor = hexStringToUIColor("#D7D7D7")
+                //cell.backgroundColor = hexStringToUIColor("#D7D7D7")
             }
             
         }
         else{ //a doua sectiune -> a doua lista
             if self.retobj1.count == 0{
                 cell.textLabel?.text = "You don't have any aircraft added yet."
-                cell.backgroundColor = hexStringToUIColor("#D7D7D7")
+                //cell.backgroundColor = hexStringToUIColor("#D7D7D7")
             }
             else{
                 let va = self.retobj1[indexPath.row]["Type"] as! String
                 cell.textLabel?.text = va
-                cell.backgroundColor = hexStringToUIColor("#D7D7D7")
+                //cell.backgroundColor = hexStringToUIColor("#D7D7D7")
             }
         }
         return cell
     }
 
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Licences"
         }
@@ -253,19 +253,19 @@ class UserDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
+   /* func hexStringToUIColor (_ hex:String) -> UIColor {
+        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercased()
         
         if (cString.hasPrefix("#")) {
-            cString = cString.substringFromIndex(cString.startIndex.advancedBy(1))
+            cString = cString.substring(from: cString.characters.index(cString.startIndex, offsetBy: 1))
         }
         
         if ((cString.characters.count) != 6) {
-            return UIColor.grayColor()
+            return UIColor.gray
         }
         
         var rgbValue:UInt32 = 0
-        NSScanner(string: cString).scanHexInt(&rgbValue)
+        Scanner(string: cString).scanHexInt32(&rgbValue)
         
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -273,5 +273,5 @@ class UserDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
-    }
+    }*/
 }

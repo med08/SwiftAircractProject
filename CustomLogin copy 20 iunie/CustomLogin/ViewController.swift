@@ -17,11 +17,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var sometext: UITextView!
     
-    let login_button = UIButton(type: UIButtonType.System)
-    let signup_button = UIButton(type: UIButtonType.System)
-    let start_button = UIButton(type: UIButtonType.System)
-    let change_button = UIButton(type: UIButtonType.System)
-    let signout_button = UIButton(type: UIButtonType.System)
+    let login_button = UIButton(type: UIButtonType.system)
+    let signup_button = UIButton(type: UIButtonType.system)
+    let start_button = UIButton(type: UIButtonType.system)
+    let change_button = UIButton(type: UIButtonType.system)
+    let signout_button = UIButton(type: UIButtonType.system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,37 +45,37 @@ class ViewController: UIViewController {
     
     func loadData()
     {
-        let currentUser = PFUser.currentUser()
+        let currentUser = PFUser.current()
         if currentUser == nil {
             
-            login_button.frame = CGRectMake(100, 100, 120, 50)
-            login_button.backgroundColor = UIColor.clearColor()
-            login_button.setTitle("Login", forState: UIControlState.Normal)
-            login_button.addTarget(self, action: "loginButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            login_button.frame = CGRect(x: 100, y: 100, width: 120, height: 50)
+            login_button.backgroundColor = UIColor.clear
+            login_button.setTitle("Login", for: UIControlState())
+            login_button.addTarget(self, action: #selector(ViewController.loginButtonAction(_:)), for: UIControlEvents.touchUpInside)
             self.view.addSubview(login_button)
             
             
             
         } else {
             
-            start_button.frame = CGRectMake(100, 100, 120, 50)
-            start_button.backgroundColor = UIColor.clearColor()
-            start_button.setTitle("Start Flight", forState: UIControlState.Normal)
-            start_button.addTarget(self, action: "startButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            start_button.frame = CGRect(x: 100, y: 100, width: 120, height: 50)
+            start_button.backgroundColor = UIColor.clear
+            start_button.setTitle("Start Flight", for: UIControlState())
+            start_button.addTarget(self, action: #selector(ViewController.startButtonAction(_:)), for: UIControlEvents.touchUpInside)
             self.view.addSubview(start_button)
             
             
-            change_button.frame = CGRectMake(100, 150, 120, 50)
-            change_button.backgroundColor = UIColor.clearColor()
-            change_button.setTitle("Change Airplane", forState: UIControlState.Normal)
-            change_button.addTarget(self, action: "changeButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            change_button.frame = CGRect(x: 100, y: 150, width: 120, height: 50)
+            change_button.backgroundColor = UIColor.clear
+            change_button.setTitle("Change Airplane", for: UIControlState())
+            change_button.addTarget(self, action: #selector(ViewController.changeButtonAction(_:)), for: UIControlEvents.touchUpInside)
             self.view.addSubview(change_button)
             
             
-            signout_button.frame = CGRectMake(100, 200, 120, 50)
-            signout_button.backgroundColor = UIColor.clearColor()
-            signout_button.setTitle("Sign out", forState: UIControlState.Normal)
-            signout_button.addTarget(self, action: "signoutButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            signout_button.frame = CGRect(x: 100, y: 200, width: 120, height: 50)
+            signout_button.backgroundColor = UIColor.clear
+            signout_button.setTitle("Sign out", for: UIControlState())
+            signout_button.addTarget(self, action: #selector(ViewController.signoutButtonAction(_:)), for: UIControlEvents.touchUpInside)
             self.view.addSubview(signout_button)
             print("Esti logat duude")
             
@@ -84,22 +84,22 @@ class ViewController: UIViewController {
         
     }
     
-    func loginButtonAction(sender:UIButton!)
+    func loginButtonAction(_ sender:UIButton!)
     {
-        self.performSegueWithIdentifier("Custom", sender: self)
+        self.performSegue(withIdentifier: "Custom", sender: self)
     }
 
-    func startButtonAction(sender:UIButton!)
+    func startButtonAction(_ sender:UIButton!)
     {
-        self.performSegueWithIdentifier("Custom", sender: self)
+        self.performSegue(withIdentifier: "Custom", sender: self)
     }
     
-    func changeButtonAction(sender:UIButton!)
+    func changeButtonAction(_ sender:UIButton!)
     {
-        self.performSegueWithIdentifier("Custom", sender: self)
+        self.performSegue(withIdentifier: "Custom", sender: self)
     }
     
-    func signoutButtonAction(sender:UIButton!)
+    func signoutButtonAction(_ sender:UIButton!)
     {
         PFUser.logOut()
         let alert = UIAlertView(title: "Success", message: "You are now logged out.", delegate: self, cancelButtonTitle: "OK")

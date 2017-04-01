@@ -5,9 +5,8 @@
 //  Created by Alexandra Lazea on 25/02/16.
 //  Copyright © 2016 Medeea. All rights reserved.
 //
-
+/*
 import XCTest
-@testable import CustomLogin
 
 class CustomLoginTests: XCTestCase {
     
@@ -28,9 +27,9 @@ class CustomLoginTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
     
-}
+}*/

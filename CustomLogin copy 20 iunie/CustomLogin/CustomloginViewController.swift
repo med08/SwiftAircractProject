@@ -12,16 +12,16 @@ import Parse
 class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate {
 
 
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0,150,150)) as UIActivityIndicatorView
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 150,height: 150)) as UIActivityIndicatorView
     
     //let usernameField = UITextField(frame: CGRectMake(20, 100, 300, 40))
-    let usernameField = UITextField(frame: CGRectMake(0, 360, 300, 40))
-    let passwordField = UITextField(frame: CGRectMake(20, 150, 300, 40))
-    let login_button = UIButton(type: UIButtonType.System)
-    let signup_button = UIButton(type: UIButtonType.System)
-    let start_button = UIButton(type: UIButtonType.System)
-    let change_button = UIButton(type: UIButtonType.System)
-    let signout_button = UIButton(type: UIButtonType.System)
+    let usernameField = UITextField(frame: CGRect(x: 0, y: 360, width: 300, height: 40))
+    let passwordField = UITextField(frame: CGRect(x: 20, y: 150, width: 300, height: 40))
+    let login_button = UIButton(type: UIButtonType.system)
+    let signup_button = UIButton(type: UIButtonType.system)
+    let start_button = UIButton(type: UIButtonType.system)
+    let change_button = UIButton(type: UIButtonType.system)
+    let signout_button = UIButton(type: UIButtonType.system)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFi
   
         self.activityIndicator.hidesWhenStopped = true
         
-        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         
         view.addSubview(self.activityIndicator)
         
@@ -52,35 +52,35 @@ class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFi
     
     func loadData()
     {
-        let currentUser = PFUser.currentUser()
+        let currentUser = PFUser.current()
         if currentUser == nil {
             
             
             usernameField.bounds = CGRect(x: 0, y: 0, width: view.bounds.width-50, height: 40)
             usernameField.center = CGPoint(x: view.bounds.width / 2, y: self.view.frame.size.height - 280)
             usernameField.placeholder = "Username"
-            usernameField.font = UIFont.systemFontOfSize(15)
-            usernameField.borderStyle = UITextBorderStyle.RoundedRect
-            usernameField.autocorrectionType = UITextAutocorrectionType.No
-            usernameField.keyboardType = UIKeyboardType.Default
-            usernameField.returnKeyType = UIReturnKeyType.Done
-            usernameField.clearButtonMode = UITextFieldViewMode.WhileEditing;
-            usernameField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+            usernameField.font = UIFont.systemFont(ofSize: 15)
+            usernameField.borderStyle = UITextBorderStyle.roundedRect
+            usernameField.autocorrectionType = UITextAutocorrectionType.no
+            usernameField.keyboardType = UIKeyboardType.default
+            usernameField.returnKeyType = UIReturnKeyType.done
+            usernameField.clearButtonMode = UITextFieldViewMode.whileEditing;
+            usernameField.contentVerticalAlignment = UIControlContentVerticalAlignment.center
             usernameField.delegate = self
             self.view.addSubview(usernameField)
 
             passwordField.bounds = CGRect(x: 0, y: 0, width: view.bounds.width-50, height: 40)
             passwordField.center = CGPoint(x: view.bounds.width / 2, y: self.view.frame.size.height - 230)
             passwordField.placeholder = "Password"
-            passwordField.font = UIFont.systemFontOfSize(15)
-            passwordField.borderStyle = UITextBorderStyle.RoundedRect
-            passwordField.autocorrectionType = UITextAutocorrectionType.No
-            passwordField.keyboardType = UIKeyboardType.Default
-            passwordField.returnKeyType = UIReturnKeyType.Done
-            passwordField.clearButtonMode = UITextFieldViewMode.WhileEditing;
-            passwordField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+            passwordField.font = UIFont.systemFont(ofSize: 15)
+            passwordField.borderStyle = UITextBorderStyle.roundedRect
+            passwordField.autocorrectionType = UITextAutocorrectionType.no
+            passwordField.keyboardType = UIKeyboardType.default
+            passwordField.returnKeyType = UIReturnKeyType.done
+            passwordField.clearButtonMode = UITextFieldViewMode.whileEditing;
+            passwordField.contentVerticalAlignment = UIControlContentVerticalAlignment.center
             passwordField.delegate = self
-            passwordField.secureTextEntry = true
+            passwordField.isSecureTextEntry = true
             self.view.addSubview(passwordField)
             
             /*login_button.bounds = CGRect(x: 0, y: 0, width: view.bounds.width, height: 80)
@@ -99,11 +99,11 @@ class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFi
             
             login_button.bounds = CGRect(x: 0, y: 0, width: view.bounds.width - 30, height: 80)
             login_button.center = CGPoint(x: view.bounds.width / 2, y: self.view.frame.size.height - 150)
-            login_button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), forState: UIControlState.Normal)
-            login_button.titleLabel?.font = UIFont.systemFontOfSize(20)
-            login_button.setTitleColor(UIColor.whiteColor(), forState:  UIControlState.Normal)
-            login_button.setTitle("Login", forState: UIControlState.Normal)
-            login_button.addTarget(self, action: #selector(CustomloginViewController.loginButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            login_button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), for: UIControlState())
+            login_button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+            login_button.setTitleColor(UIColor.white, for:  UIControlState())
+            login_button.setTitle("Login", for: UIControlState())
+            login_button.addTarget(self, action: #selector(CustomloginViewController.loginButtonAction(_:)), for: UIControlEvents.touchUpInside)
             self.view.addSubview(login_button)
 
             
@@ -118,16 +118,16 @@ class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFi
             
             signup_button.bounds = CGRect(x: 0, y: 0, width: view.bounds.width - 30, height: 80)
             signup_button.center = CGPoint(x: view.bounds.width / 2, y: self.view.frame.size.height - 60)
-            signup_button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), forState: UIControlState.Normal)
-            signup_button.titleLabel?.font = UIFont.systemFontOfSize(20)
-            signup_button.setTitleColor(UIColor.whiteColor(), forState:  UIControlState.Normal)
-            signup_button.setTitle("Sign Up", forState: UIControlState.Normal)
-            signup_button.addTarget(self, action: #selector(CustomloginViewController.signupButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            signup_button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), for: UIControlState())
+            signup_button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+            signup_button.setTitleColor(UIColor.white, for:  UIControlState())
+            signup_button.setTitle("Sign Up", for: UIControlState())
+            signup_button.addTarget(self, action: #selector(CustomloginViewController.signupButtonAction(_:)), for: UIControlEvents.touchUpInside)
             self.view.addSubview(signup_button)
 
             
             
-            self.tabBarController?.tabBar.hidden = true
+            self.tabBarController?.tabBar.isHidden = true
             
             
             
@@ -135,40 +135,40 @@ class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFi
             
             start_button.bounds = CGRect(x: 0, y: 0, width: view.bounds.width - 30, height: 80)
             start_button.center = CGPoint(x: view.bounds.width / 2, y: self.view.frame.size.height - 290)
-            start_button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), forState: UIControlState.Normal)
-            start_button.titleLabel?.font = UIFont.systemFontOfSize(20)
-            start_button.setTitleColor(UIColor.whiteColor(), forState:  UIControlState.Normal)
-            start_button.setTitle("Start Flight", forState: UIControlState.Normal)
-            start_button.addTarget(self, action: #selector(CustomloginViewController.startButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            start_button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), for: UIControlState())
+            start_button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+            start_button.setTitleColor(UIColor.white, for:  UIControlState())
+            start_button.setTitle("Start Flight", for: UIControlState())
+            start_button.addTarget(self, action: #selector(CustomloginViewController.startButtonAction(_:)), for: UIControlEvents.touchUpInside)
             self.view.addSubview(start_button)
             
             
             change_button.bounds = CGRect(x: 0, y: 0, width: view.bounds.width - 30, height: 80)
             change_button.center = CGPoint(x: view.bounds.width / 2, y: self.view.frame.size.height - 200)
-            change_button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), forState: UIControlState.Normal)
-            change_button.titleLabel?.font = UIFont.systemFontOfSize(20)
-            change_button.setTitleColor(UIColor.whiteColor(), forState:  UIControlState.Normal)
-            change_button.setTitle("Change Airplane", forState: UIControlState.Normal)
-            change_button.addTarget(self, action: #selector(CustomloginViewController.changeButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            change_button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), for: UIControlState())
+            change_button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+            change_button.setTitleColor(UIColor.white, for:  UIControlState())
+            change_button.setTitle("Change Airplane", for: UIControlState())
+            change_button.addTarget(self, action: #selector(CustomloginViewController.changeButtonAction(_:)), for: UIControlEvents.touchUpInside)
             self.view.addSubview(change_button)
             
             
             signout_button.bounds = CGRect(x: 0, y: 0, width: view.bounds.width - 30, height: 80)
             signout_button.center = CGPoint(x: view.bounds.width / 2, y: self.view.frame.size.height - 110)
-            signout_button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), forState: UIControlState.Normal)
-            signout_button.titleLabel?.font = UIFont.systemFontOfSize(20)
-            signout_button.setTitleColor(UIColor.whiteColor(), forState:  UIControlState.Normal)
-            signout_button.setTitle("Sign out", forState: UIControlState.Normal)
-            signout_button.addTarget(self, action: #selector(CustomloginViewController.signoutButtonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            signout_button.setBackgroundImage(UIImage(named: "Icon-Spotlight-40"), for: UIControlState())
+            signout_button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+            signout_button.setTitleColor(UIColor.white, for:  UIControlState())
+            signout_button.setTitle("Sign out", for: UIControlState())
+            signout_button.addTarget(self, action: #selector(CustomloginViewController.signoutButtonAction(_:)), for: UIControlEvents.touchUpInside)
             self.view.addSubview(signout_button)
-            self.tabBarController?.tabBar.hidden = false
+            self.tabBarController?.tabBar.isHidden = false
         }
         
         
     }
     
     
-    func loginButtonAction(sender:UIButton!)
+    func loginButtonAction(_ sender:UIButton!)
     {
         let username = self.usernameField.text
         let password = self.passwordField.text
@@ -183,13 +183,13 @@ class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFi
         else {
             
             self.activityIndicator.startAnimating()
-            PFUser.logInWithUsernameInBackground(username!, password: password!, block: {(user, error) -> Void in
+            PFUser.logInWithUsername(inBackground: username!, password: password!, block: {(user, error) -> Void in
                 self.activityIndicator.stopAnimating()
                 
                 if ((user) != nil){
                     let alert = UIAlertView(title: "Succes \n Your name is \(username!)", message: "Logged In", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
-                    self.tabBarController?.tabBar.hidden = false
+                    self.tabBarController?.tabBar.isHidden = false
                     self.loadData()                             //reload the page to change buttons
                     self.usernameField.removeFromSuperview()
                     self.passwordField.removeFromSuperview()
@@ -210,22 +210,22 @@ class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFi
     }
     
     
-    func signupButtonAction(sender:UIButton!)
+    func signupButtonAction(_ sender:UIButton!)
     {
-        self.performSegueWithIdentifier("signup", sender: self)
+        self.performSegue(withIdentifier: "signup", sender: self)
     }
     
     
-    func startButtonAction(sender:UIButton!)
+    func startButtonAction(_ sender:UIButton!)
     {
         
         let query = PFQuery(className: "Aircrafts")
-        let currentUser = PFUser.currentUser()
+        let currentUser = PFUser.current()
         query.whereKey("User", equalTo: currentUser!)
         //query.whereKey("Type", equalTo: "CPL") imi intoarce doar anumite linii
         //query.selectKeys("Type") doar coloana asta
         //query.orderByAscending("Type")
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -236,10 +236,10 @@ class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFi
                         }
                     }
                     if cnt == returnedobjects.count{
-                        self.performSegueWithIdentifier("chooseAirplane", sender: self)
+                        self.performSegue(withIdentifier: "chooseAirplane", sender: self)
                     }
                     else{
-                        self.performSegueWithIdentifier("mapView", sender: self)
+                        self.performSegue(withIdentifier: "mapView", sender: self)
                     }
                 }
             }
@@ -249,12 +249,12 @@ class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFi
         
             }
     
-    func changeButtonAction(sender:UIButton!)
+    func changeButtonAction(_ sender:UIButton!)
     {
-        self.performSegueWithIdentifier("changeAirplaneSegue", sender: self)
+        self.performSegue(withIdentifier: "changeAirplaneSegue", sender: self)
     }
     
-    func signoutButtonAction(sender:UIButton!)
+    func signoutButtonAction(_ sender:UIButton!)
     {
         PFUser.logOut()
         let alert = UIAlertView(title: "Success", message: "You are now logged out.", delegate: self, cancelButtonTitle: "OK")
@@ -263,7 +263,7 @@ class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFi
         change_button.removeFromSuperview()
         start_button.removeFromSuperview()
         //UIApplication.sharedApplication().keyWindow?.rootViewController = storyboard!.instantiateViewControllerWithIdentifier("view")
-        self.view.window!.rootViewController?.dismissViewControllerAnimated(false, completion: nil)
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         loadData()
     }
 
@@ -310,7 +310,7 @@ class CustomloginViewController: UIViewController, UITableViewDelegate, UITextFi
     }
     */
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     

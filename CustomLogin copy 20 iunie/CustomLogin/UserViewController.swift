@@ -15,7 +15,7 @@ class UserViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let currentUser = PFUser.currentUser()?.username
+        let currentUser = PFUser.current()?.username
         textview.text="\(currentUser!)"
  
 
@@ -27,10 +27,10 @@ class UserViewController: UIViewController{
     }
     
 
-    @IBAction func logoutAction(sender: AnyObject) {
+    @IBAction func logoutAction(_ sender: AnyObject) {
         PFUser.logOut()
         let alert = UIAlertView(title: "Success", message: "You are now logged out.", delegate: self, cancelButtonTitle: "OK")
         alert.show()
-        self.performSegueWithIdentifier("Usertofirstview", sender: self)
+        self.performSegue(withIdentifier: "Usertofirstview", sender: self)
     }
 }

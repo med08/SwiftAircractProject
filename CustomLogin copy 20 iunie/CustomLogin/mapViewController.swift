@@ -31,7 +31,7 @@ class mapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDe
  
   */
     var departureSwitch = 0
-    var takeOffTime = NSDate()
+    var takeOffTime = Date()
     var atLeastOneTime = 0
     var takeOffCity = ""
     var currentAirplane = ""
@@ -88,11 +88,11 @@ class mapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDe
          self.navigationItem.title = "FLYING"
         
         let query = PFQuery(className: "Aircrafts")
-        let currentUser = PFUser.currentUser()
+        let currentUser = PFUser.current()
         query.whereKey("User", equalTo: currentUser!)
         query.whereKey("CurrentAirplane", equalTo: 1)
         
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -134,7 +134,7 @@ class mapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDe
     */
     
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
         let regionToZoom = MKCoordinateRegionMake(manager.location!.coordinate, MKCoordinateSpanMake(0.005, 0.005))
         mapView.setRegion(regionToZoom, animated: true)
@@ -168,8 +168,8 @@ class mapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDe
         var timestamp = ""
         if speed * 3.6 > 11{
             if departureSwitch == 0{
-                takeOffTime = NSDate()
-                timestamp = NSDateFormatter.localizedStringFromDate(takeOffTime, dateStyle: .NoStyle , timeStyle: .ShortStyle)
+                takeOffTime = Date()
+                timestamp = DateFormatter.localizedString(from: takeOffTime, dateStyle: .none , timeStyle: .short)
                 myLatitude.text = "Departed at: \(timestamp)"
                 if let toc = self.myLongitude.text{
                     takeOffCity = toc
@@ -185,13 +185,13 @@ class mapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDe
                 //let timestamp1 = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .NoStyle , timeStyle: .ShortStyle)
                 //minutul cand a aterizat
                 //landTime.text = timestamp1
-                let inAirTime = String(format: "%d", minutesBetween(takeOffTime, endDate: NSDate()))
+                let inAirTime = String(format: "%d", minutesBetween(takeOffTime, endDate: Date()))
                 //landTime.text = inAirTime
                 departureSwitch = 0
-                if minutesBetween(takeOffTime, endDate: NSDate()) >= 1{
-                    let formatter = NSDateFormatter()
-                    formatter.timeStyle = NSDateFormatterStyle.MediumStyle
-                    formatter.dateStyle = NSDateFormatterStyle.NoStyle
+                if minutesBetween(takeOffTime, endDate: Date()) >= 1{
+                    let formatter = DateFormatter()
+                    formatter.timeStyle = DateFormatter.Style.medium
+                    formatter.dateStyle = DateFormatter.Style.none
 
                     let flight = PFObject(className: "Flight")
                     
@@ -201,21 +201,21 @@ class mapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDe
                     flight["takeOffLongitude"] = takeOffLongitude
                     flight["registration"] = "kmkm"
                     flight["airplane"] = currentAirplane
-                    flight["takeOff"] = formatter.stringFromDate(takeOffTime)
-                    flight["landing"] = formatter.stringFromDate(NSDate())
+                    flight["takeOff"] = formatter.string(from: takeOffTime)
+                    flight["landing"] = formatter.string(from: Date())
                     flight["inAirTime"] = inAirTime
-                    flight["user"] = PFUser.currentUser()
+                    flight["user"] = PFUser.current()
                     
-                    let dateFormatter = NSDateFormatter()
+                    let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd-MM-YYYY"
-                    let dateString = dateFormatter.stringFromDate(NSDate())
+                    let dateString = dateFormatter.string(from: Date())
 
                     
                     flight["date"] = dateString
                     flight["takeOffCity"] = takeOffCity
                     flight["landingCity"] = self.myLongitude.text
                     
-                    flight.saveInBackgroundWithBlock { (success, error) -> Void in
+                    flight.saveInBackground { (success, error) -> Void in
                         if success {
                                print("success")
                         }
@@ -235,7 +235,7 @@ class mapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDe
         */
        
         if atLeastOneTime == 1 {
-            let currentTime = NSDate()
+            let currentTime = Date()
             //var airTime = currentTime - takeOffTime
             inAirTime.text = String(format:"In air time: %d min", minutesBetween(takeOffTime, endDate: currentTime))
         }
@@ -244,18 +244,18 @@ class mapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDe
     }
     
     
-    func minutesBetween(startDate: NSDate, endDate: NSDate) -> Int
+    func minutesBetween(_ startDate: Date, endDate: Date) -> Int
     {
-        let calendar = NSCalendar.currentCalendar()
+        let calendar = Calendar.current
         
-        let components = calendar.components([.Minute], fromDate: startDate, toDate: endDate, options: [])
+        let components = (calendar as NSCalendar).components([.minute], from: startDate, to: endDate, options: [])
         
-        return components.minute
+        return components.minute!
     }
 
 
 
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Errors: \(error.localizedDescription)")
     }
 

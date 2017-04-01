@@ -22,11 +22,11 @@ class allFlightsViewController: UIViewController , UITableViewDelegate, UITableV
         
         self.navigationItem.title = "FLIGHTS"
         
-        tableView1.frame         =   CGRectMake(0, 140, view.bounds.width, 500); //a doua e marginTop
+        tableView1.frame         =   CGRect(x: 0, y: 140, width: view.bounds.width, height: 500); //a doua e marginTop
         tableView1.delegate      =   self
         tableView1.dataSource    =   self
         
-        tableView1.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView1.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         tableView1.tableFooterView = UIView()
         
@@ -34,9 +34,9 @@ class allFlightsViewController: UIViewController , UITableViewDelegate, UITableV
         label.bounds = CGRect(x: 0, y: 0, width: view.bounds.width, height: 80)
         label.center = CGPoint(x: view.bounds.width / 2, y: 100)
         label.backgroundColor = UIColor(patternImage: UIImage(named: "Icon-Spotlight-40")!)
-        label.font = UIFont.systemFontOfSize(20)
-        label.textColor = UIColor.whiteColor()
-        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = UIColor.white
+        label.textAlignment = NSTextAlignment.center
         label.text = "Your flights:"
         self.view.addSubview(label)
         
@@ -45,9 +45,9 @@ class allFlightsViewController: UIViewController , UITableViewDelegate, UITableV
         
         if custom == 0{
             let query = PFQuery(className: "Flight")
-            let currentUser = PFUser.currentUser()
+            let currentUser = PFUser.current()
             query.whereKey("user", equalTo: currentUser!)
-            query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            query.findObjectsInBackground { (objects, error) -> Void in
                 if error == nil{
                     //there was no error in the fetch
                     if let returnedobjects = objects {
@@ -66,26 +66,26 @@ class allFlightsViewController: UIViewController , UITableViewDelegate, UITableV
         else{
             
             let query = PFQuery(className: "Flight")
-            let currentUser = PFUser.currentUser()
+            let currentUser = PFUser.current()
             query.whereKey("user", equalTo: currentUser!)
             
             if searchParameters[0] != "Any day"{
                 if searchParameters[1] != "Any month"{
                      if searchParameters[2] != "Any year"{
                         if searchParameters[3] != "Any airplane"{
-                            query.whereKey("date", containsString: searchParameters[0]+"-"+searchParameters[1]+"-"+searchParameters[2]).whereKey( "registration", equalTo: searchParameters[3])
+                            query.whereKey("date", contains: searchParameters[0]+"-"+searchParameters[1]+"-"+searchParameters[2]).whereKey( "registration", equalTo: searchParameters[3])
                             
                         }
                         else{
-                            query.whereKey("date", containsString: searchParameters[0]+"-"+searchParameters[1]+"-"+searchParameters[2])
+                            query.whereKey("date", contains: searchParameters[0]+"-"+searchParameters[1]+"-"+searchParameters[2])
                         }
                     }
                      else{
                         if searchParameters[3] != "Any airplane"{
-                            query.whereKey("date", containsString: searchParameters[0]+"-"+searchParameters[1]+"-").whereKey( "registration", equalTo: searchParameters[3])
+                            query.whereKey("date", contains: searchParameters[0]+"-"+searchParameters[1]+"-").whereKey( "registration", equalTo: searchParameters[3])
                         }
                         else{
-                             query.whereKey("date", containsString: searchParameters[0]+"-"+searchParameters[1]+"-")
+                             query.whereKey("date", contains: searchParameters[0]+"-"+searchParameters[1]+"-")
                         }
                         
                     }
@@ -93,19 +93,19 @@ class allFlightsViewController: UIViewController , UITableViewDelegate, UITableV
                 else{
                     if searchParameters[2] != "Any year"{
                         if searchParameters[3] != "Any airplane"{
-                             query.whereKey("date", containsString: searchParameters[0]+"-").whereKey("date", containsString: "-"+searchParameters[2]).whereKey( "registration", equalTo: searchParameters[3])
+                             query.whereKey("date", contains: searchParameters[0]+"-").whereKey("date", contains: "-"+searchParameters[2]).whereKey( "registration", equalTo: searchParameters[3])
                         }
                         else{
-                            query.whereKey("date", containsString: searchParameters[0]+"-").whereKey("date", containsString: "-"+searchParameters[2])
+                            query.whereKey("date", contains: searchParameters[0]+"-").whereKey("date", contains: "-"+searchParameters[2])
                         }
                         
                     }
                     else{
                         if searchParameters[3] != "Any airplane"{
-                            query.whereKey("date", containsString: searchParameters[0]+"-").whereKey( "registration", equalTo: searchParameters[3])
+                            query.whereKey("date", contains: searchParameters[0]+"-").whereKey( "registration", equalTo: searchParameters[3])
                         }
                         else{
-                            query.whereKey("date", containsString: searchParameters[0]+"-")                        }
+                            query.whereKey("date", contains: searchParameters[0]+"-")                        }
                     }
                 }
             }
@@ -113,19 +113,19 @@ class allFlightsViewController: UIViewController , UITableViewDelegate, UITableV
                 if searchParameters[1] != "Any month"{
                     if searchParameters[2] != "Any year"{
                         if searchParameters[3] != "Any airplane"{
-                            query.whereKey("date", containsString: "-"+searchParameters[1]+"-"+searchParameters[2]).whereKey( "registration", equalTo: searchParameters[3])
+                            query.whereKey("date", contains: "-"+searchParameters[1]+"-"+searchParameters[2]).whereKey( "registration", equalTo: searchParameters[3])
                             
                         }
                         else{
-                            query.whereKey("date", containsString: "-"+searchParameters[1]+"-"+searchParameters[2])
+                            query.whereKey("date", contains: "-"+searchParameters[1]+"-"+searchParameters[2])
                         }
                     }
                     else{
                         if searchParameters[3] != "Any airplane"{
-                            query.whereKey("date", containsString: "-"+searchParameters[1]+"-").whereKey( "registration", equalTo: searchParameters[3])
+                            query.whereKey("date", contains: "-"+searchParameters[1]+"-").whereKey( "registration", equalTo: searchParameters[3])
                         }
                         else{
-                            query.whereKey("date", containsString: "-"+searchParameters[1]+"-")
+                            query.whereKey("date", contains: "-"+searchParameters[1]+"-")
                         }
                         
                     }
@@ -133,16 +133,16 @@ class allFlightsViewController: UIViewController , UITableViewDelegate, UITableV
                 else{
                     if searchParameters[2] != "Any year"{
                         if searchParameters[3] != "Any airplane"{
-                            query.whereKey("date", containsString: "-"+searchParameters[2]).whereKey( "registration", equalTo: searchParameters[3])
+                            query.whereKey("date", contains: "-"+searchParameters[2]).whereKey( "registration", equalTo: searchParameters[3])
                         }
                         else{
-                            query.whereKey("date", containsString: "-"+searchParameters[2])
+                            query.whereKey("date", contains: "-"+searchParameters[2])
                         }
                         
                     }
                     else{
                         if searchParameters[3] != "Any airplane"{
-                            query.whereKey("date", containsString: "-"+searchParameters[2]).whereKey( "registration", equalTo: searchParameters[3])
+                            query.whereKey("date", contains: "-"+searchParameters[2]).whereKey( "registration", equalTo: searchParameters[3])
                         }
                     }
                 }
@@ -151,7 +151,7 @@ class allFlightsViewController: UIViewController , UITableViewDelegate, UITableV
             
 
             
-            query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            query.findObjectsInBackground { (objects, error) -> Void in
                 if error == nil{
                     //there was no error in the fetch
                     if let returnedobjects = objects {
@@ -188,12 +188,12 @@ class allFlightsViewController: UIViewController , UITableViewDelegate, UITableV
      }
      */
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.retobj.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView1.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView1.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         if self.retobj.count == 0{
             cell.textLabel?.text = "You don't have any flights yet."
         }
@@ -205,27 +205,27 @@ class allFlightsViewController: UIViewController , UITableViewDelegate, UITableV
             va = va + " min" + "   " + (self.retobj[indexPath.row]["date"] as! String)
             cell.textLabel?.text = va
             cell.imageView?.image = UIImage(named: "airplane_mode_on-25")
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             }
         return cell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1 //number of sections in the table
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "flightDetails") {
-            let svc = segue.destinationViewController as! flightDetailsViewController;
+            let svc = segue.destination as! flightDetailsViewController;
             svc.flightID = fllightID
             
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         fllightID = "\(self.retobj[indexPath.row].objectId!)"
-        self.performSegueWithIdentifier("flightDetails", sender: self)
+        self.performSegue(withIdentifier: "flightDetails", sender: self)
     }
     
     

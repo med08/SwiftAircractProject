@@ -26,7 +26,7 @@ class flightDetailsViewController: UIViewController {
         //tableView1.delegate      =   self
         //tableView1.dataSource    =   self
         
-        tableView1.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView1.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         
         //Retrive all the data from the class
@@ -35,7 +35,7 @@ class flightDetailsViewController: UIViewController {
         //let currentUser = PFUser.currentUser()
         //query.whereKey("User", equalTo: currentUser!)
         query.whereKey("objectId", equalTo: flightID)
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -46,40 +46,40 @@ class flightDetailsViewController: UIViewController {
                         //dateFormatter.dateFormat = "dd-MM-YYYY"
                         //let dateString = dateFormatter.stringFromDate(object["date"] as! NSDate)
                         var i : CGFloat = 65
-                        var label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                        var label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                         label.text = "Date: " + (object["date"] as! String)
                         self.view.addSubview(label)
                         i = i + 25
-                        label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                        label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                         label.text = "Aircraft: " + (object["airplane"] as! String)
                         self.view.addSubview(label)
                         i = i + 25
-                        label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                        label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                         label.text = "Registration: " + (object["registration"] as! String)
                         self.view.addSubview(label)
                         i = i + 25
-                        label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                        label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                         label.text = "Take off time: " + (object["takeOff"] as! String)
                         self.view.addSubview(label)
                         
                         i = i + 25
-                        label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                        label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                         label.text = "Landing time: " + (object["landing"] as! String)
                         self.view.addSubview(label)
                         
                         i = i + 25
-                        label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                        label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                         label.text = "In air time: " + (object["inAirTime"] as! String)
                         self.view.addSubview(label)
                         
                         i = i + 25
-                        label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                        label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                         label.text = "Take off coordinates: "
                         self.view.addSubview(label)
                         
                         i = i + 25
                         
-                        label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                        label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                         label.text = "\(object["takeOffLatitude"] as! NSNumber)" + "  " + "\(object["takeOffLongitude"] as! NSNumber)"
                         self.view.addSubview(label)
 
@@ -87,17 +87,17 @@ class flightDetailsViewController: UIViewController {
                         if let toc = object["takeOffCity"] as? String{
                             if toc != "Location"{
                             i = i + 25
-                            label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                            label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                             label.text = toc
                             self.view.addSubview(label)
                             }}
                         i = i + 25
-                        label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                        label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                         label.text = "Landing coordinates: "
                         self.view.addSubview(label)
                         
                         i = i + 25
-                        label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                        label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                         label.text = "\(object["landingLatitude"] as! NSNumber)" + " " + "\(object["landingLongitude"] as! NSNumber)"
                         self.view.addSubview(label)
                         
@@ -106,7 +106,7 @@ class flightDetailsViewController: UIViewController {
                         if let lc = object["landingCity"] as? String{
                             if lc != "Location"{
                             i = i + 25
-                            label = UILabel(frame: CGRectMake(0, i, 300, 21))
+                            label = UILabel(frame: CGRect(x: 0, y: i, width: 300, height: 21))
                             label.text = lc
                             self.view.addSubview(label)
                             }}

@@ -20,19 +20,19 @@ class ChangeAirplaneViewController: UIViewController , UITableViewDelegate, UITa
         
          self.navigationItem.title = "CHANGE AIRPLANE"
         
-        tableView1.frame         =   CGRectMake(0, 65, 320, 500); //a doua e marginTop
+        tableView1.frame         =   CGRect(x: 0, y: 65, width: 320, height: 500); //a doua e marginTop
         tableView1.delegate      =   self
         tableView1.dataSource    =   self
         
-        tableView1.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView1.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         
         //Retrive all the data from the class
         
         let query = PFQuery(className: "Aircrafts")
-        let currentUser = PFUser.currentUser()
+        let currentUser = PFUser.current()
         query.whereKey("User", equalTo: currentUser!)
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -66,12 +66,12 @@ class ChangeAirplaneViewController: UIViewController , UITableViewDelegate, UITa
     }
     */
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.retobj.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView1.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView1.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         if self.retobj.count == 0{
             cell.textLabel?.text = "You don't have any airplane added yet."
         }
@@ -82,23 +82,23 @@ class ChangeAirplaneViewController: UIViewController , UITableViewDelegate, UITa
         return cell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1 //number of sections in the table
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Select from the list"
     }
     
     func beforeChange(){
         
         let query = PFQuery(className: "Aircrafts")
-        let currentUser = PFUser.currentUser()
+        let currentUser = PFUser.current()
         query.whereKey("User", equalTo: currentUser!)
         //query.whereKey("Type", equalTo: "CPL") imi intoarce doar anumite linii
         //query.selectKeys("Type") doar coloana asta
         //query.orderByAscending("Type")
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -114,11 +114,11 @@ class ChangeAirplaneViewController: UIViewController , UITableViewDelegate, UITa
 
     
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let query = PFQuery(className: "Aircrafts")
         query.whereKey("objectId", equalTo: self.retobj[indexPath.row].objectId!)
         beforeChange()
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.findObjectsInBackground { (objects, error) -> Void in
             if error == nil{
                 //there was no error in the fetch
                 if let returnedobjects = objects {
@@ -136,9 +136,9 @@ class ChangeAirplaneViewController: UIViewController , UITableViewDelegate, UITa
         alert.delegate = self
         alert.title = "Your current airplane is"
         alert.message = "\(self.retobj[indexPath.row]["Type"] as! String)"
-        alert.addButtonWithTitle("OK")
+        alert.addButton(withTitle: "OK")
         alert.show()
-        self.performSegueWithIdentifier("changeAirplaneToMainPage", sender: self)
+        self.performSegue(withIdentifier: "changeAirplaneToMainPage", sender: self)
     }
 
 

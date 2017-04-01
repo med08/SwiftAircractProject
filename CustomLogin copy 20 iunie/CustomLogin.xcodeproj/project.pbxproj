@@ -293,15 +293,18 @@
 					C2F457DA1C7EF53800D36BFF = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = L87D32DUJ9;
+						LastSwiftMigration = 0820;
 					};
 					C2F457EE1C7EF53800D36BFF = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = L87D32DUJ9;
+						LastSwiftMigration = 0820;
 						TestTargetID = C2F457DA1C7EF53800D36BFF;
 					};
 					C2F457F91C7EF53800D36BFF = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = L87D32DUJ9;
+						LastSwiftMigration = 0820;
 						TestTargetID = C2F457DA1C7EF53800D36BFF;
 					};
 				};
@@ -520,6 +523,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MyStuff.CustomLogin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -535,6 +539,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MyStuff.CustomLogin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -546,6 +551,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MyStuff.CustomLoginTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomLogin.app/CustomLogin";
 			};
 			name = Debug;
@@ -558,6 +564,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MyStuff.CustomLoginTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomLogin.app/CustomLogin";
 			};
 			name = Release;
@@ -569,6 +576,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MyStuff.CustomLoginUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CustomLogin;
 				USES_XCTRUNNER = YES;
 			};
@@ -581,6 +589,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MyStuff.CustomLoginUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CustomLogin;
 				USES_XCTRUNNER = YES;
 			};
